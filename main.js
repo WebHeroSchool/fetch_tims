@@ -1,4 +1,12 @@
-fetch('https://api.github.com/users/6thSence')
+(function() {
+    let urlParams = new URLSearchParams(window.location.search);
+    let user = urlParams.get("username");
+    //let user = window.location.search.slice(10,);
+
+    let url = 'https://api.github.com/users/';
+    let urlGit = url + user;
+
+    fetch(urlGit)
         .then(response => response.json())
         .then(data => showData(data))
         .catch(err => console.log('Информация о пользователе не доступна'));
@@ -46,4 +54,5 @@ fetch('https://api.github.com/users/6thSence')
         } else {
             console.log('Информация об описании профиля пользователя не доступна');
         }
-};
+    }
+})();
